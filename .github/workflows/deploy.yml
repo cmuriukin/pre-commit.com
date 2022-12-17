@@ -16,3 +16,11 @@ jobs:
     - run: make push
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+        
+  sonarqube:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checking out
+      uses: SonarSource/sonarqube-scan-action@v1.1.0
