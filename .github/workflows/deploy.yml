@@ -18,12 +18,15 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         
-  sonarqube:
-    name: SonarQube Trigger
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-    - name: Checking out
-      uses: SonarSource/sonarqube-scan-action@v1.1.0
-      with:
-        host: localhost:9000
-        login: sqp_3ae0695fda56069d136df7d4e17dedf199983efa
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
