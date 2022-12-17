@@ -6,16 +6,16 @@ on:
     - cron: '30 8 * * *'
 
 jobs:
-  pr:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
-    - run: pip install virtualenv
-    - run: make
-    - run: make push
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#   pr:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - uses: actions/setup-python@v1
+#     - run: pip install virtualenv
+#     - run: make
+#     - run: make push
+#       env:
+#         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         
   sonarcloud:
